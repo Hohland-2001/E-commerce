@@ -13,13 +13,16 @@ class Product:
         self.quantity = quantity
 
     @classmethod
-    def new_product(cls, dict_products):
+    def new_product(cls, dict_products=None):
         """Метод принимает на вход словарь и соответственно присваивает каждому атрибуту значение"""
-        name = dict_products["name"]
-        description = dict_products["description"]
-        price = dict_products["price"]
-        quantity = dict_products["quantity"]
-        return cls(name, description, price, quantity)
+        if dict_products is not None:
+            name = dict_products["name"]
+            description = dict_products["description"]
+            price = dict_products["price"]
+            quantity = dict_products["quantity"]
+            return cls(name, description, price, quantity)
+        else:
+            return None
 
     @property
     def price(self):

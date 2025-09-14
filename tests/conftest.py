@@ -14,18 +14,18 @@ def product_2():
     return Product()
 
 
-@pytest.fixture()
-def property_product_1():
-    product3 = Product("Xiaomi Redmi Note 11", "1024GB, Синий", 120, 14)
-    product3.price = 0
-    return product3
-
-
-@pytest.fixture()
-def property_product_2():
-    product3 = Product("Xiaomi Redmi Note 11", "1024GB, Синий", 120, 14)
-    product3.price = 300
-    return product3
+# @pytest.fixture()
+# def property_product_1():
+#     product3 = Product("Xiaomi Redmi Note 11", "1024GB, Синий", 120, 14)
+#     product3.price = 0
+#     return product3
+#
+#
+# @pytest.fixture()
+# def property_product_2():
+#     product3 = Product("Xiaomi Redmi Note 11", "1024GB, Синий", 120, 14)
+#     product3.price = 300
+#     return product3
 
 
 @pytest.fixture()
@@ -37,10 +37,11 @@ def new_product():
 
 @pytest.fixture()
 def category_1():
+    product = Product("Samsung", "64GB, Серый цвет, 200MP камера", 200.0, 10)
     return Category("Смартфоны",
                     "Смартфоны, как средство не только коммуникации, "
                     "но и получения дополнительных функций для удобства жизни",
-                    [1, 2, 3])
+                    [product])
 
 
 @pytest.fixture()
@@ -50,9 +51,8 @@ def category_2():
 
 @pytest.fixture()
 def category_3():
-    return Category("t",
-                    "ooo",
-                    [8, 3, 5, 2])
+    product = Product("Iphone 15", "512GB, Gray space", 210000.0, 8)
+    return Category(name="t", products=[product])
 
 
 @pytest.fixture()
