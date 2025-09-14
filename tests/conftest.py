@@ -14,20 +14,6 @@ def product_2():
     return Product()
 
 
-# @pytest.fixture()
-# def property_product_1():
-#     product3 = Product("Xiaomi Redmi Note 11", "1024GB, Синий", 120, 14)
-#     product3.price = 0
-#     return product3
-#
-#
-# @pytest.fixture()
-# def property_product_2():
-#     product3 = Product("Xiaomi Redmi Note 11", "1024GB, Синий", 120, 14)
-#     product3.price = 300
-#     return product3
-
-
 @pytest.fixture()
 def new_product():
     return Product.new_product(
@@ -47,12 +33,6 @@ def category_1():
 @pytest.fixture()
 def category_2():
     return Category()
-
-
-@pytest.fixture()
-def category_3():
-    product = Product("Iphone 15", "512GB, Gray space", 210000.0, 8)
-    return Category(name="t", products=[product])
 
 
 @pytest.fixture()
