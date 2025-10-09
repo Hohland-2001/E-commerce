@@ -37,3 +37,7 @@ class Product:
         else:
             self.__price = new_price
         return None
+
+    def __str__(self):
+        """Магический метод для строкового отображения объекта"""
+        return f'{self.name}, {self.__price} руб. Остаток: {self.quantity} шт.'
