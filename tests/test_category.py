@@ -16,3 +16,9 @@ def test_category_add_product(category_1, product_1):
 
 def test_category_info_products(category_1):
     assert category_1.info_product == "Samsung, 200.0 руб. Остаток: 10 шт.\n"
+
+
+def test_str(category_1, category_2, category_info):
+    assert str(category_1) == 'Смартфоны, количество продуктов: 10 шт.'
+    assert str(category_2) == ', количество продуктов: 0 шт.'
+    assert str(category_info) == 'dks, количество продуктов: 27 шт.'
