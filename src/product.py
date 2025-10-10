@@ -36,7 +36,6 @@ class Product:
             print('Цена не должна быть нулевая или отрицательная')
         else:
             self.__price = new_price
-        return None
 
     def __str__(self) -> str:
         """Магический метод для строкового отображения объекта"""

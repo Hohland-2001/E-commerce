@@ -1,3 +1,6 @@
+import pytest
+
+
 def test_product_init(product_1, product_2):
     assert product_1.name == 'Samsung Galaxy S23 Ultra'
     assert product_1.description == '256GB, Серый цвет, 200MP камера'
@@ -39,3 +42,22 @@ def test_add(product_1, product_2, new_product):
     assert product_1 + product_2 == 900000.0
     assert product_1 + new_product == 906930.0
     assert product_2 + new_product == 6930
+
+
+def test_class_smartphone_init(smart_1):
+    assert smart_1.color == 'Серый'
+    assert smart_1.efficiency == 95.5
+    assert smart_1.model == 'S23 Ultra'
+    assert smart_1.memory == 256
+
+
+def test_class_add(smart_1, smart_2, grass_1):
+    assert smart_1 + smart_2 == 2580000.0
+    with pytest.raises(TypeError):
+        smart_1 + grass_1
+
+
+def test_class_lawngrass_init(grass_1):
+    assert grass_1.country == 'Россия'
+    assert grass_1.germination_period == '7 дней'
+    assert grass_1.color == 'Зеленый'
