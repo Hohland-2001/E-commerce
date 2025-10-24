@@ -22,12 +22,12 @@ class Category:
 
     def add_product(self, product=''):
         """Метод добавляет продукт в категорию"""
-        if isinstance(product, Product) and product != '':
+        if isinstance(product, Product) and issubclass(type(product), Product) and product != '':
             self.__products.append(product)
             Category.product_count += 1
             return None
         else:
-            return None
+            raise TypeError
 
     @property
     def products(self):
