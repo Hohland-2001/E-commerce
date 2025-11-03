@@ -15,6 +15,7 @@ class BaseProduct(ABC):
 
 class MixinLog:
     """Класс-миксин"""
+
     def __init__(self):
         print(repr(self))
 
