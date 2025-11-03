@@ -5,7 +5,7 @@ class BaseProduct(ABC):
     """Абстрактный класс"""
 
     @abstractmethod
-    def __init__(self):
+    def __init__(self, *args, **kwargs):
         pass
 
     @abstractmethod
@@ -15,12 +15,14 @@ class BaseProduct(ABC):
 
 class MixinLog:
     """Класс-миксин"""
+    def __init__(self):
+        print(repr(self))
 
     def __repr__(self):
         return f"{self.__class__.__name__}('{self.name}', '{self.description}', {self.price}, {self.quantity})"
 
 
-class Product(BaseProduct, MixinLog):
+class Product(MixinLog, BaseProduct):
     name: str
     description: str
     price: float
@@ -33,6 +35,7 @@ class Product(BaseProduct, MixinLog):
         self.description = description
         self.__price = price
         self.quantity = quantity
+        super().__init__()
 
     @classmethod
     def new_product(cls, dict_products: dict = None):
