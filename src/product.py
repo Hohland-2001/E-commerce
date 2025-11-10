@@ -35,7 +35,10 @@ class Product(MixinLog, BaseProduct):
         self.name = name
         self.description = description
         self.__price = price
-        self.quantity = quantity
+        if quantity != 0:
+            self.quantity = quantity
+        else:
+            raise ValueError('Товар с нулевым количеством не может быть добавлен')
         super().__init__()
 
     @classmethod
@@ -73,6 +76,7 @@ class Product(MixinLog, BaseProduct):
 
 
 class Smartphone(Product):
+    """Класс для смартфонов"""
 
     def __init__(self, name, description, price, quantity, efficiency, model, memory, color):
         """Метод инициализирует новые характеристики в классе-наследнике"""
@@ -91,6 +95,7 @@ class Smartphone(Product):
 
 
 class LawnGrass(Product):
+    """Класс для травы газонной"""
 
     def __init__(self, name, description, price, quantity, country, germination_period, color):
         """Метод инициализирует новые характеристики в классе-наследнике"""

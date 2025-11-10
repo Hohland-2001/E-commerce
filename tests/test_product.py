@@ -2,14 +2,11 @@ import pytest
 from src.product import Product, Smartphone, LawnGrass
 
 
-def test_product_init(product_1, product_2):
+def test_product_init(product_1):
     assert product_1.name == 'Samsung Galaxy S23 Ultra'
     assert product_1.description == '256GB, Серый цвет, 200MP камера'
     assert product_1.quantity == 5
 
-    assert product_2.name == ''
-    assert product_2.description == ''
-    assert product_2.quantity == 0
 
 
 def test_product_new_product(new_product):
@@ -19,30 +16,24 @@ def test_product_new_product(new_product):
     assert new_product.quantity == 22
 
 
-def test_product_price_property(product_1, product_2):
+def test_product_price_property(product_1):
     assert product_1.price == 180000.0
-    assert product_2.price == 0
 
 
-def test_product_price_setter(product_1, product_2):
+def test_product_price_setter(product_1):
     product_1.price = 200
     assert product_1.price == 200
     product_1.price = -100
     assert product_1.price == 200
-    product_2.price = 300
-    assert product_2.price == 300
 
 
-def test_str(product_1, product_2, new_product):
+def test_str(product_1, new_product):
     assert str(product_1) == 'Samsung Galaxy S23 Ultra, 180000.0 руб. Остаток: 5 шт.'
-    assert str(product_2) == ', 0 руб. Остаток: 0 шт.'
     assert str(new_product) == 'Samsung Galaxy S23 Ultra, 315 руб. Остаток: 22 шт.'
 
 
-def test_add(product_1, product_2, new_product):
-    assert product_1 + product_2 == 900000.0
+def test_add(product_1, new_product):
     assert product_1 + new_product == 906930.0
-    assert product_2 + new_product == 6930
 
 
 def test_class_smartphone_init(smart_1):
@@ -78,3 +69,8 @@ def test_mixinlog(capsys):
               "Россия", "7 дней", "Зеленый")
     message = capsys.readouterr()
     assert message.out.strip() == "LawnGrass('Газонная трава', 'Элитная трава для газона', 500.0, 20)"
+
+
+def tests_value_error():
+    with pytest.raises(ValueError, match='Товар с нулевым количеством не может быть добавлен'):
+        Product("Бракованный товар", "Неверное количество", 1000.0, 0)
