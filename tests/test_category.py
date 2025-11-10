@@ -1,4 +1,5 @@
 import pytest
+from src.category import Category
 
 
 def test_category_init(category_1, category_2, product_1):
@@ -27,3 +28,11 @@ def test_str(category_1, category_2, category_info):
     assert str(category_1) == 'Смартфоны, количество продуктов: 10 шт.'
     assert str(category_2) == ', количество продуктов: 0 шт.'
     assert str(category_info) == 'dks, количество продуктов: 27 шт.'
+
+
+def test_middle_price(category_info):
+    assert round(category_info.middle_price(), 2) == 140333.33
+
+
+def test_zero_division_error(category_2):
+    assert category_2.middle_price() == 0
